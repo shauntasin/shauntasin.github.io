@@ -6,7 +6,7 @@ I build at the intersection of applied AI, automation, and real-world systems.
 
 This space is where I share:
 
-- field notes from experiments
+- data-backed insights from experience and understanding
 - technical breakdowns in plain language
 - practical lessons from building products from idea to deployment
 
