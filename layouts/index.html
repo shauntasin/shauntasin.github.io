@@ -1,0 +1,16 @@
+{{ define "main" }}
+<section class="hero">
+  <h1>{{ .Site.Title }}</h1>
+  <p>{{ .Site.Params.tagline }}</p>
+</section>
+<section>
+  <h2>Posts</h2>
+  <ul class="postlist">
+    {{ range .Site.RegularPages.ByDate.Reverse }}
+      <li><a href="{{ .RelPermalink }}">{{ .Title }}</a><span>{{ .Date.Format "2006-01-02" }}</span></li>
+    {{ else }}
+      <li>No posts yet.</li>
+    {{ end }}
+  </ul>
+</section>
+{{ end }}

@@ -1,0 +1,6 @@
+baseURL = 'https://shauntasin.github.io/'
+languageCode = 'en-us'
+title = 'shauntasin'
+
+[params]
+  tagline = 'Minimal tech notes from the terminal edge.'
