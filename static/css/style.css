@@ -51,6 +51,36 @@ body::after {
   box-shadow: inset 0 0 130px #000;
 }
 
+.boot-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: #000;
+  color: #8dff8d;
+  display: grid;
+  place-items: center;
+  text-shadow: 0 0 8px #6cff6c;
+  transition: opacity 0.25s ease;
+}
+
+.boot-screen.hide {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.boot-text {
+  margin: 0;
+  white-space: pre;
+  font: 1rem/1.45 "Courier New", "Lucida Console", Monaco, monospace;
+  border: 1px solid #1f5f1f;
+  padding: 1rem 1.2rem;
+  background: #031003;
+}
+
+body.booting .wrap {
+  visibility: hidden;
+}
+
 .wrap {
   max-width: 840px;
   margin: 0 auto;
@@ -65,6 +95,19 @@ body::after {
   padding: 0.55rem 0.8rem;
   border: 1px solid var(--border);
   background: linear-gradient(180deg, #0c2a0c, #081908);
+}
+
+.nav-links {
+  margin-left: auto;
+  display: flex;
+  gap: 0.9rem;
+  font-size: 0.88rem;
+}
+
+.nav-links a {
+  color: var(--dim);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
 }
 
 .brand {

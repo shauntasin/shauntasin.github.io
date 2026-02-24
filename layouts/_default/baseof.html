@@ -3,14 +3,40 @@
 <head>
   {{ partial "head.html" . }}
 </head>
-<body>
+<body class="{{ if .IsHome }}booting{{ end }}">
+  {{ if .IsHome }}
+  <section id="boot" class="boot-screen" aria-hidden="true">
+    <pre class="boot-text">*** SHAUNTASIN v1.0 ***
+64K RAM SYSTEM  38911 BASIC BYTES FREE
+READY.
+LOAD "HOME",8,1
+RUN</pre>
+  </section>
+  {{ end }}
+
   <main class="wrap">
     <header class="topbar">
       <a class="brand" href="/">{{ .Site.Title }}</a>
+      <nav class="nav-links">
+        <a href="/">home</a>
+        <a href="/about/">about</a>
+      </nav>
       <span class="cursor">_</span>
     </header>
     {{ block "main" . }}{{ end }}
     <footer class="foot">© {{ now.Year }} {{ .Site.Title }} · built with Hugo</footer>
   </main>
+
+  {{ if .IsHome }}
+  <script>
+    window.addEventListener('load', function () {
+      const boot = document.getElementById('boot');
+      setTimeout(() => {
+        document.body.classList.remove('booting');
+        if (boot) boot.classList.add('hide');
+      }, 1400);
+    });
+  </script>
+  {{ end }}
 </body>
 </html>
