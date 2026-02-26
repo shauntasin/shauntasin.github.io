@@ -3,7 +3,7 @@
 <head>
   {{ partial "head.html" . }}
 </head>
-<body class="theme-mechatronics {{ if .IsHome }}booting{{ end }}">
+<body class="{{ if .IsHome }}booting{{ end }}">
   {{ if .IsHome }}
   <section id="boot" class="boot-screen" aria-hidden="true">
     <pre class="boot-text">[ SHAUNTASIN // MECHATRONICS CONSOLE v2.6 ]
@@ -22,7 +22,6 @@ EXECUTE: load_home()</pre>
         <a href="/">home</a>
         <a href="/about/">about</a>
       </nav>
-      <button id="themeToggle" class="theme-toggle" type="button" aria-label="Toggle theme">newsboat mode</button>
       <span class="cursor">_</span>
     </header>
     {{ block "main" . }}{{ end }}
@@ -41,27 +40,5 @@ EXECUTE: load_home()</pre>
   </script>
   {{ end }}
 
-  <script>
-    (function () {
-      const key = 'site-theme';
-      const btn = document.getElementById('themeToggle');
-      const apply = (theme) => {
-        document.body.classList.remove('theme-mechatronics', 'theme-newsboat');
-        document.body.classList.add(theme === 'newsboat' ? 'theme-newsboat' : 'theme-mechatronics');
-        if (btn) btn.textContent = theme === 'newsboat' ? 'mechatronics mode' : 'newsboat mode';
-      };
-
-      const saved = localStorage.getItem(key);
-      apply(saved === 'newsboat' ? 'newsboat' : 'mechatronics');
-
-      if (btn) {
-        btn.addEventListener('click', function () {
-          const next = document.body.classList.contains('theme-newsboat') ? 'mechatronics' : 'newsboat';
-          localStorage.setItem(key, next);
-          apply(next);
-        });
-      }
-    })();
-  </script>
 </body>
 </html>
