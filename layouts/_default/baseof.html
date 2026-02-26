@@ -6,11 +6,12 @@
 <body class="{{ if .IsHome }}booting{{ end }}">
   {{ if .IsHome }}
   <section id="boot" class="boot-screen" aria-hidden="true">
-    <pre class="boot-text">*** SHAUNTASIN v1.0 ***
-64K RAM SYSTEM  38911 BASIC BYTES FREE
-READY.
-LOAD "HOME",8,1
-RUN</pre>
+    <pre class="boot-text">[ SHAUNTASIN // MECHATRONICS CONSOLE v2.6 ]
+BOOT SEQUENCE .......... OK
+SERVO BUS .............. ONLINE
+SENSOR ARRAY ........... ONLINE
+TERMINAL LINK .......... READY
+EXECUTE: load_home()</pre>
   </section>
   {{ end }}
 

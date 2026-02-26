@@ -1,11 +1,14 @@
 :root {
-  --bg: #051105;
-  --bg-deep: #020702;
-  --panel: #081908;
-  --text: #8dff8d;
-  --bright: #b7ffb7;
-  --dim: #4aa84a;
-  --border: #1f5f1f;
+  --bg: #060b14;
+  --bg-deep: #03060c;
+  --panel: rgba(10, 18, 30, 0.8);
+  --panel-strong: rgba(12, 23, 38, 0.95);
+  --text: #9cd7ff;
+  --bright: #d9f0ff;
+  --dim: #5da0cc;
+  --line: #1f4f73;
+  --accent: #45e3ff;
+  --warn: #ffc857;
 }
 
 * { box-sizing: border-box; }
@@ -19,15 +22,27 @@ body {
   margin: 0;
   color: var(--text);
   background:
-    radial-gradient(circle at 50% -10%, #103010 0%, var(--bg) 45%, var(--bg-deep) 100%);
-  font: 20px/1.55 "Courier New", "Lucida Console", Monaco, monospace;
-  letter-spacing: 0.02em;
-  text-shadow: 0 0 6px #58ff58aa;
+    radial-gradient(circle at 15% -20%, #17395b 0%, transparent 38%),
+    radial-gradient(circle at 85% 120%, #172d49 0%, transparent 40%),
+    linear-gradient(180deg, var(--bg) 0%, var(--bg-deep) 100%);
+  font: 19px/1.6 "JetBrains Mono", "IBM Plex Mono", "Courier New", monospace;
+  letter-spacing: 0.01em;
+  text-shadow: 0 0 12px rgba(69, 227, 255, 0.22);
   position: relative;
 }
 
-/* CRT scanlines */
 body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(rgba(18, 48, 80, 0.18) 1px, transparent 1px) 0 0 / 100% 30px,
+    linear-gradient(90deg, rgba(18, 48, 80, 0.14) 1px, transparent 1px) 0 0 / 30px 100%;
+  opacity: 0.28;
+}
+
+body::after {
   content: "";
   position: fixed;
   inset: 0;
@@ -36,30 +51,21 @@ body::before {
     to bottom,
     rgba(0, 0, 0, 0) 0,
     rgba(0, 0, 0, 0) 2px,
-    rgba(0, 0, 0, 0.23) 3px,
-    rgba(0, 0, 0, 0.23) 4px
+    rgba(0, 0, 0, 0.2) 3px,
+    rgba(0, 0, 0, 0.2) 4px
   );
-  opacity: 0.35;
-}
-
-/* subtle tube vignette */
-body::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  box-shadow: inset 0 0 130px #000;
+  mix-blend-mode: overlay;
+  opacity: 0.4;
 }
 
 .boot-screen {
   position: fixed;
   inset: 0;
   z-index: 9999;
-  background: #000;
-  color: #8dff8d;
+  background: #02050a;
+  color: var(--accent);
   display: grid;
   place-items: center;
-  text-shadow: 0 0 8px #6cff6c;
   transition: opacity 0.25s ease;
 }
 
@@ -71,18 +77,18 @@ body::after {
 .boot-text {
   margin: 0;
   white-space: pre;
-  font: 1rem/1.45 "Courier New", "Lucida Console", Monaco, monospace;
-  border: 1px solid #1f5f1f;
+  font: 0.98rem/1.5 "JetBrains Mono", "Courier New", monospace;
+  border: 1px solid var(--line);
+  border-radius: 8px;
   padding: 1rem 1.2rem;
-  background: #031003;
+  background: linear-gradient(180deg, #08101d, #060b14);
+  box-shadow: 0 0 30px rgba(69, 227, 255, 0.15);
 }
 
-body.booting .wrap {
-  visibility: hidden;
-}
+body.booting .wrap { visibility: hidden; }
 
 .wrap {
-  max-width: 840px;
+  max-width: 900px;
   margin: 0 auto;
   padding: 2.2rem 1.2rem 4rem;
 }
@@ -92,22 +98,24 @@ body.booting .wrap {
   align-items: center;
   gap: 0.6rem;
   margin-bottom: 2rem;
-  padding: 0.55rem 0.8rem;
-  border: 1px solid var(--border);
-  background: linear-gradient(180deg, #0c2a0c, #081908);
+  padding: 0.7rem 0.9rem;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: linear-gradient(180deg, rgba(15, 28, 44, 0.95), rgba(9, 17, 29, 0.95));
+  box-shadow: inset 0 0 0 1px rgba(69, 227, 255, 0.1), 0 0 30px rgba(0, 0, 0, 0.4);
 }
 
 .nav-links {
   margin-left: auto;
   display: flex;
-  gap: 0.9rem;
-  font-size: 0.88rem;
+  gap: 1rem;
+  font-size: 0.85rem;
 }
 
 .nav-links a {
   color: var(--dim);
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
 }
 
 .brand {
@@ -117,18 +125,16 @@ body.booting .wrap {
 }
 
 .brand::before {
-  content: "READY. ";
-  color: var(--dim);
+  content: "[CONSOLE] ";
+  color: var(--warn);
 }
 
 .cursor {
-  color: var(--bright);
+  color: var(--accent);
   animation: blink 1s step-end infinite;
 }
 
-@keyframes blink {
-  50% { opacity: 0; }
-}
+@keyframes blink { 50% { opacity: 0; } }
 
 .hero h1 {
   margin: 0;
@@ -137,8 +143,8 @@ body.booting .wrap {
 }
 
 .hero h1::before {
-  content: "> ";
-  color: var(--dim);
+  content: ">_ ";
+  color: var(--accent);
 }
 
 .hero p {
@@ -146,10 +152,35 @@ body.booting .wrap {
   margin-top: 0.45rem;
 }
 
+.status-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.8rem;
+  margin: 1.2rem 0 1.7rem;
+}
+
+.status-card {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 0.7rem 0.8rem;
+  background: var(--panel);
+  box-shadow: inset 0 0 0 1px rgba(69, 227, 255, 0.08);
+}
+
+.status-card .label {
+  display: block;
+  color: var(--dim);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.2rem;
+}
+
+h1, h2, h3 { color: var(--bright); }
+
 h2 {
-  color: var(--bright);
   margin-top: 2rem;
-  border-bottom: 1px dashed var(--border);
+  border-bottom: 1px dashed var(--line);
   padding-bottom: 0.35rem;
 }
 
@@ -163,19 +194,20 @@ h2 {
   display: flex;
   justify-content: space-between;
   gap: 1rem;
-  padding: 0.62rem 0.8rem;
-  margin: 0.5rem 0;
-  border: 1px solid var(--border);
-  background: var(--panel);
+  padding: 0.7rem 0.85rem;
+  margin: 0.55rem 0;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--panel-strong);
 }
 
 a {
-  color: var(--bright);
+  color: var(--accent);
   text-decoration: none;
 }
 
 a:hover {
-  color: #dcffdc;
+  color: #e7f8ff;
   text-decoration: underline;
 }
 
@@ -184,14 +216,21 @@ a:hover {
   margin-top: -0.5rem;
 }
 
+.post h1 { margin-bottom: 0.2rem; }
+
 .content {
   margin-top: 1rem;
+}
+
+.content p,
+.content li {
+  max-width: 72ch;
 }
 
 .foot {
   margin-top: 3rem;
   color: var(--dim);
   font-size: 0.95rem;
-  border-top: 1px solid var(--border);
+  border-top: 1px solid var(--line);
   padding-top: 1rem;
 }

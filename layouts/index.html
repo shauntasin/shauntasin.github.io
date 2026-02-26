@@ -3,6 +3,21 @@
   <h1>{{ .Site.Title }}</h1>
   <p>{{ .Site.Params.tagline }}</p>
 </section>
+<section class="status-grid" aria-label="system status">
+  <div class="status-card">
+    <span class="label">Mode</span>
+    <strong>Mechatronics Console</strong>
+  </div>
+  <div class="status-card">
+    <span class="label">Signal</span>
+    <strong>Stable</strong>
+  </div>
+  <div class="status-card">
+    <span class="label">Node</span>
+    <strong>{{ .Site.Title }}</strong>
+  </div>
+</section>
+
 <section>
   <h2>Posts</h2>
   <ul class="postlist">
