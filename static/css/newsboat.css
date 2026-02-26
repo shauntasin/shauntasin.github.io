@@ -33,7 +33,7 @@ body.theme-newsboat::after {
 }
 
 .theme-newsboat .brand::before {
-  content: "[NEWSBOAT] ";
+  content: "[JOURNAL] ";
   color: var(--accent);
 }
 

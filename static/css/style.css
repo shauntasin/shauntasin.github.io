@@ -142,7 +142,7 @@ body.booting .wrap { visibility: hidden; }
 }
 
 .brand::before {
-  content: "[CONSOLE] ";
+  content: "[LOGBOOK] ";
   color: var(--warn);
 }
 
