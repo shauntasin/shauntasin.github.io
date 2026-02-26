@@ -118,6 +118,23 @@ body.booting .wrap { visibility: hidden; }
   letter-spacing: 0.1em;
 }
 
+.theme-toggle {
+  margin-left: 0.35rem;
+  border: 1px solid var(--line);
+  background: rgba(69, 227, 255, 0.08);
+  color: var(--bright);
+  border-radius: 8px;
+  padding: 0.33rem 0.55rem;
+  font: 0.72rem/1 "JetBrains Mono", monospace;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.theme-toggle:hover {
+  background: rgba(69, 227, 255, 0.16);
+}
+
 .brand {
   color: var(--bright);
   text-decoration: none;
