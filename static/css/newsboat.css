@@ -1,50 +1,55 @@
+/* Newsboat mode tuned to match shauntasin blog visual language */
 body.theme-newsboat {
-  --bg: #0b0b0b;
-  --bg-deep: #000;
-  --panel: #101010;
-  --panel-strong: #0f0f0f;
-  --text: #d2d2d2;
-  --bright: #ffffff;
-  --dim: #a8a8a8;
-  --line: #5f5f5f;
-  --accent: #ffd75f;
-  --warn: #ffaf00;
-  text-shadow: none;
-  background: linear-gradient(180deg, #111 0%, #050505 100%);
+  --bg: #070f1a;
+  --bg-deep: #040912;
+  --panel: rgba(12, 20, 33, 0.86);
+  --panel-strong: rgba(10, 18, 30, 0.94);
+  --text: #b8d7f2;
+  --bright: #e8f4ff;
+  --dim: #7ea7c8;
+  --line: #2a4e70;
+  --accent: #8ed0ff;
+  --warn: #ffc857;
+  text-shadow: 0 0 10px rgba(142, 208, 255, 0.14);
+  background:
+    radial-gradient(circle at 18% -18%, #1b3d62 0%, transparent 38%),
+    radial-gradient(circle at 86% 118%, #183352 0%, transparent 40%),
+    linear-gradient(180deg, #08111d 0%, #040912 100%);
 }
 
 body.theme-newsboat::before {
-  opacity: 0.12;
+  opacity: 0.2;
   background:
-    linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px) 0 0 / 100% 28px,
-    linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px) 0 0 / 28px 100%;
+    linear-gradient(rgba(42, 78, 112, 0.24) 1px, transparent 1px) 0 0 / 100% 30px,
+    linear-gradient(90deg, rgba(42, 78, 112, 0.18) 1px, transparent 1px) 0 0 / 30px 100%;
 }
 
 body.theme-newsboat::after {
-  opacity: 0.2;
+  opacity: 0.28;
 }
 
 .theme-newsboat .topbar,
 .theme-newsboat .postlist li,
 .theme-newsboat .status-card,
 .theme-newsboat .boot-text {
-  box-shadow: none;
-  border-radius: 4px;
+  box-shadow: inset 0 0 0 1px rgba(142, 208, 255, 0.08);
+  border-radius: 8px;
 }
 
 .theme-newsboat .brand::before {
   content: "[JOURNAL] ";
-  color: var(--accent);
+  color: var(--warn);
 }
 
 .theme-newsboat .hero h1::before {
   content: "# ";
+  color: var(--accent);
 }
 
 .theme-newsboat a {
-  color: #ffd75f;
+  color: var(--accent);
 }
 
 .theme-newsboat .theme-toggle {
-  background: rgba(255, 215, 95, 0.1);
+  background: rgba(142, 208, 255, 0.1);
 }
